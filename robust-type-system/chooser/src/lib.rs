@@ -3,20 +3,37 @@ use rand::Rng;
 use std::{
     io::{Error, ErrorKind}
 };
+use std::fmt;
+use std::fmt::{Display, Formatter};
 
-pub enum ChooseResult<'a> {
-    Choice(&'a str),
+#[derive(Debug)]
+pub enum ChoiceType {
+    Choice(& 'static str),
     NoChoiceMade,
 }
 
-pub fn choose(email: &str) -> Result<ChooseResult, std::io::Error> {
-    let color_options = vec!("Blue", "Green", "Red");
+impl Display for ChoiceType {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        match self {
+            ChoiceType::Choice(c) => write!(f, "{}", c),
+            ChoiceType::NoChoiceMade => write!(f, "No choice made")
+        }
+    }
+}
+
+pub fn choose_random_color() -> Result<ChoiceType, std::io::Error> {
+    let color_options = vec!["Blue", "Green", "Red"];
 
     let mut rng = rand::thread_rng();
 
-
-    let make_choice = rng.gen_bool(3.0);
+    let make_choice = rng.gen_bool(0.9);
     let color_choice = rng.gen_range(0, color_options.len());
 
-    Err(Error::new(ErrorKind::Other, "oops"))
+    return Ok(if make_choice {
+        ChoiceType::Choice(color_options.get(color_choice).unwrap())
+    } else {
+        ChoiceType::NoChoiceMade
+    });
+
+    Err(Error::new(ErrorKind::Other, "oops. Not a valid reason now but will have errors later"))
 }
