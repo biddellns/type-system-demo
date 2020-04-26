@@ -17,7 +17,7 @@ impl Display for ChoiceType {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         match self {
             ChoiceType::Choice(c) => write!(f, "{}", c),
-            ChoiceType::NoChoiceMade => write!(f, "No choice made")
+            ChoiceType::NoChoiceMade => write!(f, "No choice made"),
         }
     }
 }
@@ -36,5 +36,8 @@ pub fn choose_random_color() -> Result<ChoiceType, std::io::Error> {
         ChoiceType::NoChoiceMade
     });
 
-    Err(Error::new(ErrorKind::Other, "oops. Not a valid reason now but will have errors later"))
+    Err(Error::new(
+        ErrorKind::Other,
+        "oops. Not a valid reason now but will have errors later",
+    ))
 }
