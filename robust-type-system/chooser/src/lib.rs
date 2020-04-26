@@ -1,14 +1,15 @@
+use std::{
+    fmt,
+    fmt::{Display, Formatter},
+    io::{Error, ErrorKind},
+};
+
 use rand;
 use rand::Rng;
-use std::{
-    io::{Error, ErrorKind}
-};
-use std::fmt;
-use std::fmt::{Display, Formatter};
 
 #[derive(Debug)]
 pub enum ChoiceType {
-    Choice(& 'static str),
+    Choice(&'static str),
     NoChoiceMade,
 }
 
