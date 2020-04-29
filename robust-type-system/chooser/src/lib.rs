@@ -35,9 +35,4 @@ pub fn choose_random_color() -> Result<ChoiceType, std::io::Error> {
     } else {
         ChoiceType::NoChoiceMade
     });
-
-    Err(Error::new(
-        ErrorKind::Other,
-        "oops. Not a valid reason now but will have errors later",
-    ))
 }
