@@ -1,4 +1,4 @@
-use chooser::{ChoiceType, choose_random_color};
+use chooser::{choose_random_color, ChoiceType};
 use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
