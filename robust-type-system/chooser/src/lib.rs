@@ -1,7 +1,6 @@
 use std::{
     fmt,
     fmt::{Display, Formatter},
-    io::{Error, ErrorKind},
 };
 
 use rand;
