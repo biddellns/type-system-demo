@@ -3,8 +3,9 @@ use std::{
     fmt::{Display, Formatter},
 };
 
-use rand;
-use rand::Rng;
+use rand::{
+    Rng
+};
 
 #[derive(Debug)]
 pub enum ChoiceType {
